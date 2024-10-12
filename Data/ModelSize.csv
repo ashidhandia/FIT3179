@@ -1,6 +1,6 @@
-﻿Month,Year,Model,Lab,Parameters
-2,2018,ELMo,Allen Institute for AI,94
-10,2018,BERT-Large,Google,340
-2,2019,GPT-2,OpenAI,1500
-8,2019,Megatron-LM,NVIDIA,8300
-10,2019,T5,Google,11000
+﻿Year,Model,Lab,Parameters
+Feb-18,ELMo,Allen Institute for AI,94
+Oct-18,BERT-Large,Google,340
+Feb-19,GPT-2,OpenAI,1500
+Aug-19,Megatron-LM,NVIDIA,8300
+Oct-19,T5,Google,11000
