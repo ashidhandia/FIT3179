@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "AI model sizes over time.",
-  "width": 900,
+  "width": 950,
   "height": 400,
   "padding": 0,
   "data": {
@@ -54,8 +54,79 @@
     ]
   },
   "layer": [
+    {
+      "mark": {"type": "image", "width": 80, "height": 200},
+      "encoding": {
+        "x": {"value": 90},
+        "y": {"value": 345},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/GPT.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 1,
+        "dy": 15,
+        "fontSize": 10,
+        "color": "darkslategrey",
+        "fontWeight": 600
+      },
+      "encoding": {
+        "x": {"value": 90},
+        "y": {"value": 345},
+        "text": {"value": "GPT-1 (117M)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 80, "height": 200},
+      "encoding": {
+        "x": {"value": 145},
+        "y": {"value": 305},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/google.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 15,
+        "fontSize": 10,
+        "color": "darkslategrey",
+        "fontWeight": 600
+      },
+      "encoding": {
+        "x": {"value": 145},
+        "y": {"value": 305},
+        "text": {"value": "BERT-Large (340M)"},
+        "tooltip": null
+      }
+    },
     {"mark": {"type": "line", "strokeWidth": 2, "color": "#1f77b4"}},
-    {"mark": {"type": "point", "size": 80, "filled": true, "color": "#1f77b4"}}
+    {
+      "mark": {"type": "point", "size": 80, "filled": true, "color": "#1f77b4"},
+      "encoding": {
+        "tooltip": [
+          {"field": "Model", "title": "Model"},
+          {"field": "Lab", "title": "Lab"},
+          {
+            "field": "ParametersInMillions",
+            "title": "Size (Millions)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    }
   ],
   "config": {"axis": {"labelFontSize": 12, "titleFontSize": 14}}
 }
