@@ -11,6 +11,10 @@
     <style>
         body { font-family: Arial, sans-serif; }
         #map { width: 900px; height: 600px; margin-top: 20px; }
+        img { 
+            image-rendering: crisp-edges; 
+            image-rendering: -webkit-optimize-contrast; /* For better rendering on webkit-based browsers */
+        }
     </style>
 </head>
 <body>
@@ -35,7 +39,8 @@
                     return response.json();
                 })
                 .then(mapConfig => {
-                    vegaEmbed('#map', mapConfig, {renderer: 'canvas'}).catch(error => {
+                    // Use SVG renderer to avoid blurriness
+                    vegaEmbed('#map', mapConfig, {renderer: 'svg'}).catch(error => {
                         console.error('Error rendering the map:', error);
                     });
                 })
