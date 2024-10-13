@@ -1,6 +1,20 @@
-﻿Year,Model,Lab,Parameters
+﻿Year,Model,Lab,Parameters (B)
 2018-02,ELMo,Allen Institute for AI,0.094
+2018-06,GPT-1,OpenAI,0.117
 2018-10,BERT-Large,Google,0.34
-2019-02,GPT-2,OpenAI,1.5
+2019-11,GPT-2,OpenAI,1.5
 2019-08,Megatron-LM,NVIDIA,8.3
 2019-10,T5,Google,11
+2020-02,Turing-NLG,Microsoft,17
+2020-06,GPT-3,OpenAI,175
+2021-05,WuDao 2.0,BAAI,1750
+2021-12,Gopher,DeepMind,280
+2022-07,BLOOM,BigScience,176
+2023-03,PaLM,Google,540
+2023-03,GPT-4,OpenAI,1760
+2023-05,PaLM-2,Google,340
+2023-07,LLaMA-2,Meta,70
+2023-09,Falcon-180B,Technology Innovation Institute,180
+2024-04,Mistral-8x22B,Mistral AI,141
+2024-06,Nemotron-4,NVIDIA,340
+2024-09,LLaMA-3.2,Meta,405
