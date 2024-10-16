@@ -1,70 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Vega-Lite Maps</title>
-    <!-- Include Vega and Vega-Lite -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        #map { width: 900px; height: 600px; margin-top: 20px; }
-        img { 
-            image-rendering: crisp-edges; 
-            image-rendering: -webkit-optimize-contrast; /* For better rendering on webkit-based browsers */
-        }
-    </style>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Data Visualization</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv="refresh" content="0; url=https://yaoyangdi.github.io/2021_melcensus_dataviz/visualisation2">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
 </head>
 <body>
-    <h1>Select a Map</h1>
-    <!-- Hyperlinks for switching maps -->
-    <a href="#" id="link-a">Map 1</a> |
-    <a href="#" id="link-b">Map 2</a> |
-    <a href="#" id="link-c">Map 3</a>
-
-    <!-- Div where the maps will be rendered -->
-    <div id="map"></div>
-
-    <script>
-        // Function to render the map using an external JSON file
-        function renderMapFromFile(jsonFile) {
-            fetch(jsonFile)
-                .then(response => {
-                    if (!response.ok) {
-                        console.error('Network response was not ok:', response.statusText);
-                        return Promise.reject('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(mapConfig => {
-                    // Use SVG renderer to avoid blurriness
-                    vegaEmbed('#map', mapConfig, {renderer: 'svg'}).catch(error => {
-                        console.error('Error rendering the map:', error);
-                    });
-                })
-                .catch(error => console.error('Error fetching the JSON file:', error));
-        }
-
-        // Event listeners for the hyperlinks
-        document.getElementById('link-a').addEventListener('click', function(event) {
-            event.preventDefault();
-            renderMapFromFile('https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/model_growth.json'); // Map 1
-        });
-
-        document.getElementById('link-b').addEventListener('click', function(event) {
-            event.preventDefault();
-            renderMapFromFile('https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/map2.json'); // Map 2
-        });
-
-        document.getElementById('link-c').addEventListener('click', function(event) {
-            event.preventDefault();
-            renderMapFromFile('https://www.dropbox.com/scl/fi/2ak1snpa0jgyxzyr53zmq/map3.json?dl=1'); // Map 3
-        });
-
-        // Initial map load (optional)
-        renderMapFromFile('https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/model_growth.json'); // Load Map 1 by default
-    </script>
+    
 </body>
 </html>
