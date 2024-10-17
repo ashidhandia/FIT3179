@@ -1,0 +1,166 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 450,
+  "height": 285,
+  "padding": {"top": -61, "left": 0, "right": 0, "bottom": 0},
+  "title": {
+    "text": "Earth Overshoot Day",
+    "anchor": "middle",
+    "fontSize": 20,
+    "color": "#323232",
+    "fontWeight": 100,
+    "font": "Impact",
+    "subtitle": "1971 - 2024",
+    "subtitleFont": "Impact",
+    "subtitleColor": "#323232",
+    "subtitleFontWeight": "lighter",
+    "dy": 125
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/Data/overshoot-day.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Percentage of year Earth lasted",
+        "Percentage of year left when Earth run out"
+      ],
+      "as": ["Category", "Percentage"]
+    },
+    {"calculate": "datum.Percentage / 12", "as": "Proportion"},
+    {
+      "calculate": "datum.Category === 'Percentage of year Earth lasted' ? 'Sustainable Days' : 'Overshoot Days'",
+      "as": "CustomLabel"
+    },
+    {
+      "calculate": "datum.Category === 'Percentage of year Earth lasted' ? datum['Days of year passed'] : datum['Days left in a year']",
+      "as": "RelevantDays"
+    },
+    {"calculate": "datum.RelevantDays + ' ' + datum.CustomLabel", "as": " "}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 424},
+        "y": {"value": -30},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/globered.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 370},
+        "y": {"value": -30},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/globe.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 80},
+        "y": {"value": -30},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/globe.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": -47,
+        "fontSize": 12,
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 395},
+        "y": {"value": -22},
+        "text": {"value": "1.75 Earths"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": -47,
+        "fontSize": 12,
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 80},
+        "y": {"value": -22},
+        "text": {"value": "1 Earth"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {
+            "labelAngle": -45,
+            "labelExpr": "datum.value % 4 === 0 ? datum.value : ''",
+            "ticks": false,
+            "grid": false
+          },
+          "title": null
+        },
+        "y": {
+          "field": "Proportion",
+          "type": "quantitative",
+          "title": null,
+          "stack": "normalize",
+          "axis": {
+            "format": "%",
+            "labelExpr": "datum.value < 1/12 ? 'January' : datum.value < 2/12 ? 'February' : datum.value < 3/12 ? 'March' : datum.value < 4/12 ? 'April' : datum.value < 5/12 ? 'May' : datum.value < 6/12 ? 'June' : datum.value < 7/12 ? 'July' : datum.value < 8/12 ? 'August' : datum.value < 9/12 ? 'September' : datum.value < 10/12 ? 'October' : datum.value < 11/12 ? 'November' : 'December'",
+            "grid": false
+          }
+        },
+        "color": {
+          "field": "CustomLabel",
+          "scale": {
+            "domain": ["Sustainable Days", "Overshoot Days"],
+            "range": ["#007d38", "#a00000"]
+          },
+          "title": null,
+          "legend": {
+            "orient": "top-left",
+            "offset": -58,
+            "fillColor": "white",
+            "padding": 3,
+            "cornerRadius": 5
+          }
+        },
+        "order": {"field": "Category", "sort": "ascending"},
+        "tooltip": [
+          {"field": "Year", "type": "ordinal", "title": "Year: "},
+          {"field": " ", "type": "nominal"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 10,
+      "domain": false,
+      "tickColor": "black",
+      "tickWidth": 0.5
+    }
+  }
+}
