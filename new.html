@@ -89,11 +89,19 @@
 
 <body>
     <div class="page">
+
         <!-- Title and introduction text -->
         <h1>Bullying trends across Victoria (2008-2016)</h1>
         <p>With changing times, AI has swiftly integrated into our daily lives. Be it the virtual assistant on our phones
             or generative AI taking the world by storm, artificial intelligence has come a long way. However, with each
             achievement, there are costs and sacrifices. What exactly is the cost of artificial intelligence?</p>
+
+        <!-- New Visualization for AI Performance (added before the text) -->
+        <div class="vis-container">
+            <div id="visAIPerformance"></div>
+        </div>
+
+        
 
         <!-- Section 2 visualization -->
         <div class="vis-container">
@@ -113,11 +121,8 @@
                 the power consumption of each processor contribute to the overall energy demand of training AI models.
             </p>
             <p>
-                This overuse of electricity is certainly h2rmful which brings us to the concept of Earth Overshoot Day.
+                This overuse of electricity is certainly harmful which brings us to the concept of Earth Overshoot Day.
 Earth Overshoot Day marks the point in the year when humanity has consumed more resources than the Earth can regenerate in that same year. Since the late 1970s, this day has crept earlier and earlier on the calendar, signaling an unsustainable strain on the planet's resources. In 2023, it fell on August 2nd, demonstrating that we are consuming 75% more than what Earth's ecosystems can replenish.
-The Global Footprint Network introduced this concept in the 1990s to highlight the growing demand humans place on natural capital. Currently, we are using the resources of 1.75 Earths to sustain our consumption, meaning we overshoot Earth's capacity long before the year ends.
-aLONgside this excessive usage and our planet’s inability to keep up, we are further damaging the planet’s various ecosystems through our carbon emissions. Training ai models has a monstrous carbon footprint compared to what an average human can emit upto.
-
             </p>
         </div>
 
@@ -129,6 +134,14 @@ aLONgside this excessive usage and our planet’s inability to keep up, we are f
 
     <!-- Vega-Lite Visualisation -->
     <script type="text/javascript">
+        // AI Performance Visualization
+        var specVisAIPerformance = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/AIPerformance.json";
+
+        vegaEmbed('#visAIPerformance', specVisAIPerformance, { "actions": false }).then(function (result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+
+        // Section 2 Visualization
         var specVis2 = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/section2.json";
 
         vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
@@ -137,6 +150,13 @@ aLONgside this excessive usage and our planet’s inability to keep up, we are f
 
         // CO2 Perspective Visualization
         var specVisCO2 = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/CO2Perspective.json";
+
+        vegaEmbed('#visCO2', specVisCO2, { "actions": false }).then(function (result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+
+        // CO2 Perspective Visualization
+        var specVisMap = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/ChloroplethMap.json";
 
         vegaEmbed('#visCO2', specVisCO2, { "actions": false }).then(function (result) {
             // Access the Vega view instance as result.view

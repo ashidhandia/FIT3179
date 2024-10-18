@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1030,
+  "height": 400,
+  "padding": {"top": 13, "left": 15, "right": 15, "bottom": 10},
+  "title": {
+    "text": "Annual Private Investment in Artificial Intelligence (2013-2021)",
+    "anchor": "middle",
+    "fontSize": 20,
+    "color": "#323232",
+    "fontWeight": 100,
+    "font": "Impact",
+    "subtitle": "Only includes private-market investment flows. Expressed in US dollars, adjusted for inflation.",
+    "subtitleFontWeight": 400,
+    "subtitleFontStyle": "Italic",
+    "subtitleColor": "darkslategrey",
+    "dy": -3,
+    "offset": 20
+  },
+  "data": {
+    "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+    "format": {"type": "topojson", "feature": "countries"}
+  },
+  "params": [
+    {
+      "name": "yearParam",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 2013,
+        "max": 2021,
+        "step": 1,
+        "name": "Select Year:"
+      }
+    }
+  ],
+  "projection": {"type": "naturalEarth1"},
+  "layer": [
+    {"mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}},
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/divyansusu/123hitest/main/investment_ai.csv"
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {
+              "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+              "format": {"type": "topojson", "feature": "countries"}
+            },
+            "key": "id",
+            "fields": ["properties", "type", "geometry"]
+          }
+        },
+        {"filter": "datum.Year == yearParam"}
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Annual_Investment",
+          "type": "quantitative",
+          "title": "Annual Investment ($)",
+          "scale": {
+            "domain": [0, 150000000000],
+            "range": [
+              "#ebcaaa",
+              "#e3b588",
+              "#cf835b",
+              "#bf5b3f",
+              "#af3323",
+              "#a00000"
+            ]
+          },
+          "legend": {
+            "format": "$.2s",
+            "titlePadding": 10,
+            "orient": "none",
+            "legendX": 30,
+            "legendY": 0,
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "rowPadding": 0
+          }
+        },
+        "tooltip": [
+          {"field": "Entity", "type": "nominal", "title": "Country"},
+          {
+            "field": "Annual_Investment",
+            "type": "quantitative",
+            "title": "Annual Investments",
+            "format": "$.2s"
+          },
+          {"field": "Year", "type": "quantitative", "title": "Year"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
