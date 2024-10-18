@@ -204,15 +204,16 @@
   </div> <!-- end page -->
 
   <script type="text/javascript">
-    var specVis1 = "./json/EarthOvershootDay.json";
+    var specVis1 = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/ModelSize.json";
     var specVis2 = "./Visualisations/genderLine.json";
     var specVis3 = "./Visualisations/InteractiveScatter.json";
     var specVis4 = "./Visualisations/choroplethMetroMelb.json";
     var specVis5 = "./Visualisations/dotplot.json";
 
-    vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
+    vegaEmbed('#vis1', specVis1, { "actions": false, "scaleResolution": true }).then(function (result) {
+  // Access the Vega view instance as result.view
+}).catch(console.error);
+
 
     vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view

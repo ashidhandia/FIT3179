@@ -1,0 +1,458 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": {"top": 0, "left": 0, "right": 0, "bottom": 0},
+  "data": [
+    {
+      "name": "source_0",
+      "url": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/Data/ModelSize.csv",
+      "format": {"type": "csv", "delimiter": ","},
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["Model"],
+          "field": "Power Consumption (MWh)",
+          "sort": {
+            "field": ["Power Consumption (MWh)", "Parameters (B)"],
+            "order": ["descending", "descending"]
+          },
+          "as": [
+            "Power Consumption (MWh)_start",
+            "Power Consumption (MWh)_end"
+          ],
+          "offset": "zero"
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"Power Consumption (MWh)\"]) && isFinite(+datum[\"Power Consumption (MWh)\"]) && isValid(datum[\"Parameters (B)\"]) && isFinite(+datum[\"Parameters (B)\"])"
+        }
+      ]
+    },
+    {
+      "name": "source_1",
+      "url": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/Data/overshoot-day.csv",
+      "format": {"type": "csv", "delimiter": ","},
+      "transform": [
+        {
+          "type": "fold",
+          "fields": [
+            "Percentage of year Earth lasted",
+            "Percentage of year left when Earth run out"
+          ],
+          "as": ["Category", "Percentage"]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.Percentage / 12",
+          "as": "Proportion"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.Category === 'Percentage of year Earth lasted' ? 'Sustainable Days' : 'Overshoot Days'",
+          "as": "CustomLabel"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.Category === 'Percentage of year Earth lasted' ? datum['Days of year passed'] : datum['Days left in a year']",
+          "as": "RelevantDays"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.RelevantDays + ' ' + datum.CustomLabel",
+          "as": " "
+        }
+      ]
+    },
+    {
+      "name": "data_0",
+      "source": "source_1",
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["Year"],
+          "field": "Proportion",
+          "sort": {"field": ["Category"], "order": ["ascending"]},
+          "as": ["Proportion_start", "Proportion_end"],
+          "offset": "normalize"
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"Proportion\"]) && isFinite(+datum[\"Proportion\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {"name": "concat_0_width", "value": 376},
+    {"name": "concat_0_height", "value": 274},
+    {"name": "concat_1_width", "value": 450},
+    {"name": "concat_1_height", "value": 285}
+  ],
+  "layout": {"padding": -40, "columns": 1, "bounds": "full", "align": "each"},
+  "marks": [
+    {
+      "type": "group",
+      "name": "concat_0_group",
+      "title": {
+        "text": "More Parameters, More Power?",
+        "anchor": "start",
+        "fontSize": 20,
+        "color": "#323232",
+        "fontWeight": 100,
+        "font": "Impact",
+        "subtitle": "Exploring the relationship between AI model size and power consumption.",
+        "subtitleColor": "#323232",
+        "subtitleFontWeight": 600,
+        "dy": -10
+      },
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "concat_0_width"},
+          "height": {"signal": "concat_0_height"}
+        }
+      },
+      "marks": [
+        {
+          "name": "concat_0_marks",
+          "type": "rect",
+          "style": ["bar"],
+          "from": {"data": "source_0"},
+          "encode": {
+            "update": {
+              "tooltip": {
+                "signal": "{\"Model\": isValid(datum[\"Model\"]) ? datum[\"Model\"] : \"\"+datum[\"Model\"], \"Power Consumption (MWh)\": format(datum[\"Power Consumption (MWh)\"], \"\"), \"Parameters (B)\": format(datum[\"Parameters (B)\"], \"\")}"
+              },
+              "cornerRadiusTopLeft": {"value": 5},
+              "cornerRadiusTopRight": {"value": 5},
+              "fill": {
+                "scale": "concat_0_color",
+                "field": "Power Consumption (MWh)"
+              },
+              "ariaRoleDescription": {"value": "bar"},
+              "description": {
+                "signal": "\"Model: \" + (isValid(datum[\"Model\"]) ? datum[\"Model\"] : \"\"+datum[\"Model\"]) + \"; Power Consumption (MWh): \" + (format(datum[\"Power Consumption (MWh)\"], \"\")) + \"; Parameters (B): \" + (format(datum[\"Parameters (B)\"], \"\"))"
+              },
+              "xc": {"scale": "concat_0_x", "field": "Model", "band": 0.5},
+              "width": {"scale": "size", "field": "Parameters (B)"},
+              "y": {
+                "scale": "concat_0_y",
+                "field": "Power Consumption (MWh)_end"
+              },
+              "y2": {
+                "scale": "concat_0_y",
+                "field": "Power Consumption (MWh)_start"
+              }
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_0_x",
+          "orient": "bottom",
+          "grid": false,
+          "labelAngle": 315,
+          "labelAlign": "right",
+          "labelBaseline": "top",
+          "zindex": 0
+        },
+        {
+          "scale": "concat_0_y",
+          "orient": "left",
+          "grid": false,
+          "title": "Power Consumption (in MWh)",
+          "ticks": false,
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(concat_0_height/40)"},
+          "zindex": 0
+        }
+      ],
+      "legends": [
+        {
+          "labelFontSize": 10,
+          "legendX": 390,
+          "legendY": 0,
+          "orient": "none",
+          "rowPadding": 0,
+          "title": "Usage (MWh)",
+          "titleFontSize": 12,
+          "fill": "concat_0_color",
+          "gradientLength": {"signal": "clamp(concat_0_height, 64, 200)"}
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "concat_1_group",
+      "title": {
+        "text": "Earth Overshoot Day",
+        "anchor": "middle",
+        "fontSize": 20,
+        "color": "#323232",
+        "fontWeight": 100,
+        "font": "Impact",
+        "subtitle": "1971 - 2024",
+        "subtitleFont": "Impact",
+        "subtitleColor": "#323232",
+        "subtitleFontWeight": "lighter",
+        "subtitleFontSize": 14,
+        "dy": 125,
+        "frame": "group"
+      },
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "concat_1_width"},
+          "height": {"signal": "concat_1_height"}
+        }
+      },
+      "marks": [
+        {
+          "name": "concat_1_layer_0_marks",
+          "type": "image",
+          "style": ["image"],
+          "from": {"data": "source_1"},
+          "encode": {
+            "update": {
+              "xc": {"value": 424},
+              "width": {"value": 50},
+              "yc": {"value": -30},
+              "height": {"value": 200},
+              "url": {
+                "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/globered.png"
+              }
+            }
+          }
+        },
+        {
+          "name": "concat_1_layer_1_marks",
+          "type": "image",
+          "style": ["image"],
+          "from": {"data": "source_1"},
+          "encode": {
+            "update": {
+              "xc": {"value": 370},
+              "width": {"value": 50},
+              "yc": {"value": -30},
+              "height": {"value": 200},
+              "url": {
+                "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/globe.png"
+              }
+            }
+          }
+        },
+        {
+          "name": "concat_1_layer_2_marks",
+          "type": "image",
+          "style": ["image"],
+          "from": {"data": "source_1"},
+          "encode": {
+            "update": {
+              "xc": {"value": 80},
+              "width": {"value": 50},
+              "yc": {"value": -30},
+              "height": {"value": 200},
+              "url": {
+                "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/globe.png"
+              }
+            }
+          }
+        },
+        {
+          "name": "concat_1_layer_3_marks",
+          "type": "text",
+          "style": ["text"],
+          "from": {"data": "source_1"},
+          "encode": {
+            "update": {
+              "align": {"value": "center"},
+              "baseline": {"value": "top"},
+              "dx": {"value": 0},
+              "dy": {"value": -47},
+              "fontSize": {"value": 12},
+              "fontWeight": {"value": 400},
+              "fill": {"value": "black"},
+              "x": {"value": 395},
+              "y": {"value": -22},
+              "text": {"value": "1.75 Earths"}
+            }
+          }
+        },
+        {
+          "name": "concat_1_layer_4_marks",
+          "type": "text",
+          "style": ["text"],
+          "from": {"data": "source_1"},
+          "encode": {
+            "update": {
+              "align": {"value": "center"},
+              "baseline": {"value": "top"},
+              "dx": {"value": 0},
+              "dy": {"value": -47},
+              "fontSize": {"value": 12},
+              "fontWeight": {"value": 400},
+              "fill": {"value": "black"},
+              "x": {"value": 80},
+              "y": {"value": -22},
+              "text": {"value": "1 Earth"}
+            }
+          }
+        },
+        {
+          "name": "concat_1_layer_5_marks",
+          "type": "rect",
+          "style": ["bar"],
+          "from": {"data": "data_0"},
+          "encode": {
+            "update": {
+              "fill": {"scale": "concat_1_color", "field": "CustomLabel"},
+              "tooltip": {
+                "signal": "{\"Year: \": isValid(datum[\"Year\"]) ? datum[\"Year\"] : \"\"+datum[\"Year\"], \" \": isValid(datum[\" \"]) ? datum[\" \"] : \"\"+datum[\" \"]}"
+              },
+              "ariaRoleDescription": {"value": "bar"},
+              "description": {
+                "signal": "\"Year: \" + (isValid(datum[\"Year\"]) ? datum[\"Year\"] : \"\"+datum[\"Year\"]) + \"; Proportion: \" + (format(datum[\"Proportion_end\"]-datum[\"Proportion_start\"], \"%\")) + \"; CustomLabel: \" + (isValid(datum[\"CustomLabel\"]) ? datum[\"CustomLabel\"] : \"\"+datum[\"CustomLabel\"]) + \"; Category: \" + (isValid(datum[\"Category\"]) ? datum[\"Category\"] : \"\"+datum[\"Category\"]) + \"; Year: : \" + (isValid(datum[\"Year\"]) ? datum[\"Year\"] : \"\"+datum[\"Year\"]) + \";  : \" + (isValid(datum[\" \"]) ? datum[\" \"] : \"\"+datum[\" \"])"
+              },
+              "x": {"scale": "concat_1_x", "field": "Year"},
+              "width": {"signal": "max(0.25, bandwidth('concat_1_x'))"},
+              "y": {"scale": "concat_1_y", "field": "Proportion_end"},
+              "y2": {"scale": "concat_1_y", "field": "Proportion_start"}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_1_x",
+          "orient": "bottom",
+          "grid": false,
+          "labelAngle": 315,
+          "ticks": false,
+          "labelAlign": "right",
+          "labelBaseline": "top",
+          "encode": {
+            "labels": {
+              "update": {
+                "text": {"signal": "datum.value % 4 === 0 ? datum.value : ''"}
+              }
+            }
+          },
+          "zindex": 0
+        },
+        {
+          "scale": "concat_1_y",
+          "orient": "left",
+          "grid": false,
+          "format": ".0%",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(concat_1_height/40)"},
+          "encode": {
+            "labels": {
+              "update": {
+                "text": {
+                  "signal": "datum.value < 1/12 ? 'January' : datum.value < 2/12 ? 'February' : datum.value < 3/12 ? 'March' : datum.value < 4/12 ? 'April' : datum.value < 5/12 ? 'May' : datum.value < 6/12 ? 'June' : datum.value < 7/12 ? 'July' : datum.value < 8/12 ? 'August' : datum.value < 9/12 ? 'September' : datum.value < 10/12 ? 'October' : datum.value < 11/12 ? 'November' : 'December'"
+                }
+              }
+            }
+          },
+          "zindex": 0
+        }
+      ],
+      "legends": [
+        {
+          "cornerRadius": 5,
+          "fillColor": "white",
+          "offset": -58,
+          "orient": "top-left",
+          "padding": 3,
+          "fill": "concat_1_color",
+          "symbolType": "square"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "type": "linear",
+      "domain": {"data": "source_0", "field": "Parameters (B)"},
+      "range": [5, 20],
+      "zero": true
+    },
+    {
+      "name": "concat_0_x",
+      "type": "band",
+      "domain": {"data": "source_0", "field": "Model"},
+      "range": [0, {"signal": "concat_0_width"}],
+      "paddingInner": 0.1,
+      "paddingOuter": 0.05
+    },
+    {
+      "name": "concat_0_y",
+      "type": "linear",
+      "domain": {
+        "data": "source_0",
+        "fields": [
+          "Power Consumption (MWh)_start",
+          "Power Consumption (MWh)_end"
+        ]
+      },
+      "range": [{"signal": "concat_0_height"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_0_color",
+      "type": "linear",
+      "domain": {"data": "source_0", "field": "Power Consumption (MWh)"},
+      "range": {"scheme": "reds"},
+      "interpolate": "hcl",
+      "zero": false
+    },
+    {
+      "name": "concat_1_x",
+      "type": "band",
+      "domain": {"data": "data_0", "field": "Year", "sort": true},
+      "range": [0, {"signal": "concat_1_width"}],
+      "paddingInner": 0.1,
+      "paddingOuter": 0.05
+    },
+    {
+      "name": "concat_1_y",
+      "type": "linear",
+      "domain": [0, 1],
+      "range": [{"signal": "concat_1_height"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_1_color",
+      "type": "ordinal",
+      "domain": ["Sustainable Days", "Overshoot Days"],
+      "range": ["#007d38", "#a00000"]
+    }
+  ],
+  "legends": [
+    {
+      "labelFontSize": 11,
+      "legendX": 390,
+      "legendY": 230,
+      "orient": "none",
+      "title": "Parameters (B)",
+      "titleFontSize": 12,
+      "size": "size",
+      "symbolType": "square",
+      "encode": {
+        "symbols": {
+          "update": {
+            "fill": {"value": "black"},
+            "fillOpacity": {"value": 1},
+            "stroke": {"value": "transparent"}
+          }
+        }
+      }
+    }
+  ],
+  "config": {"style": {"cell": {"stroke": ""}}}
+}
