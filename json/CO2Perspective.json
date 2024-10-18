@@ -15,10 +15,10 @@
     "dy": -10,
     "dx": 0
   },
-  "padding": {"top": 0, "left": 10, "right": 10, "bottom": 10},
+  "padding": {"top": 0, "left": 15, "right": 15, "bottom": 10},
   "hconcat": [
     {
-      "width": 90,
+      "width": 80,
       "height": 250,
       "title": {
         "text": "500km Flight (1 Person)",
@@ -52,7 +52,7 @@
       }
     },
     {
-      "width": 90,
+      "width": 80,
       "height": 250,
       "title": {
         "text": "Avg. Human Life (1 Year)",
@@ -96,7 +96,7 @@
       }
     },
     {
-      "width": 65,
+      "width": 50,
       "height": 250,
       "title": {
         "text": "Training GPT-3",
