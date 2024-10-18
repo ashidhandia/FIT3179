@@ -2,13 +2,13 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "config": {"view": {"stroke": ""}},
   "padding": {"top": -55, "left": 15, "right": 15, "bottom": 10},
-  "background": null,
   "vconcat": [
     {
       "vconcat": [
         {
           "width": 950,
           "height": 400,
+          "view": {"fillOpacity": 0},
           "title": {
             "text": "LLMs Growth Over Time",
             "anchor": "start",
