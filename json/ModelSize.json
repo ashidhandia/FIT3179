@@ -1,0 +1,657 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 950,
+  "height": 400,
+  "background": "white",
+  "padding": {"top": -85, "left": 0, "right": 0, "bottom": 0},
+  "title": {
+    "text": "LLMs Growth Over Time",
+    "anchor": "start",
+    "fontSize": 20,
+    "color": "#323232",
+    "fontWeight": 100,
+    "font": "Impact",
+    "subtitle": "2018 - 2024",
+    "subtitleFont": "Impact",
+    "subtitleColor": "#323232",
+    "subtitleFontWeight": "lighter",
+    "subtitleFontSize": 14,
+    "dy": 140,
+    "dx": 5,
+    "offset": 10
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/Data/ModelSize.csv"
+  },
+  "transform": [
+    {"calculate": "toDate(datum.Year + '-01')", "as": "Date"},
+    {
+      "calculate": "datum['Parameters (B)'] * 1000",
+      "as": "ParametersInMillions"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "temporal",
+      "title": "",
+      "axis": {
+        "format": "%Y",
+        "labelExpr": "year(datum.value)",
+        "values": [
+          "2018-01-01",
+          "2019-01-01",
+          "2020-01-01",
+          "2021-01-01",
+          "2022-01-01",
+          "2023-01-01",
+          "2024-01-01"
+        ],
+        "grid": false
+      },
+      "scale": {"domain": ["2018-01-01", "2025-01-01"]}
+    },
+    "y": {
+      "field": "Parameters (B)",
+      "type": "quantitative",
+      "title": "Model Size (in Billions of Parameters)",
+      "axis": {
+        "format": "f",
+        "tickCount": 5,
+        "grid": false,
+        "labelColor": "black",
+        "titleColor": "black",
+        "domainColor": "black"
+      },
+      "scale": {"type": "log", "domain": [0.01, 2000], "nice": false}
+    },
+    "tooltip": [
+      {"field": "Model", "title": "Model"},
+      {"field": "Lab", "title": "Lab"},
+      {
+        "field": "ParametersInMillions",
+        "title": "Size (Millions)",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 56},
+        "y": {"value": 342},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/GPTlogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 56},
+        "y": {"value": 342},
+        "text": {"value": "GPT-1 (117M)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 30, "height": 200},
+      "encoding": {
+        "x": {"value": 125},
+        "y": {"value": 292},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/googlelogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 16,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 125},
+        "y": {"value": 292},
+        "text": {"value": "BERT-Large (340M)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 34},
+        "y": {"value": 287},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/AI2.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 13.5,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 34},
+        "y": {"value": 287},
+        "text": {"value": "ELMo (94M)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 37, "height": 200},
+      "encoding": {
+        "x": {"value": 156},
+        "y": {"value": 155},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/nvidialogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 156},
+        "y": {"value": 155},
+        "text": {"value": "Megatron-LM (8.3B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 30, "height": 200},
+      "encoding": {
+        "x": {"value": 235},
+        "y": {"value": 135},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/googlelogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 235},
+        "y": {"value": 135},
+        "text": {"value": "T5 (11B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 248},
+        "y": {"value": 258},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/GPTlogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 248},
+        "y": {"value": 258},
+        "text": {"value": "GPT-2 (1.5B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 25, "height": 200},
+      "encoding": {
+        "x": {"value": 318},
+        "y": {"value": 170},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/Microsoftlogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 18,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 318},
+        "y": {"value": 170},
+        "text": {"value": "Turing-NLG (17B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 344},
+        "y": {"value": 98},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/GPTlogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 18,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 344},
+        "y": {"value": 98},
+        "text": {"value": "GPT-3 (175B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 65, "height": 200},
+      "encoding": {
+        "x": {"value": 448},
+        "y": {"value": -26},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/BAAI.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 12,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 448},
+        "y": {"value": -26},
+        "text": {"value": "WuDao-2.0 (1750B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 28, "height": 200},
+      "encoding": {
+        "x": {"value": 515},
+        "y": {"value": 80},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/Deepmindlogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 18,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 515},
+        "y": {"value": 80},
+        "text": {"value": "Gopher (280B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 26, "height": 200},
+      "encoding": {
+        "x": {"value": 610},
+        "y": {"value": 102},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/bigsciencelogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 18,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 610},
+        "y": {"value": 102},
+        "text": {"value": "BLOOM (176B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 30, "height": 200},
+      "encoding": {
+        "x": {"value": 660},
+        "y": {"value": 15},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/googlelogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 660},
+        "y": {"value": 15},
+        "text": {"value": "PaLM (540B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 50, "height": 200},
+      "encoding": {
+        "x": {"value": 700},
+        "y": {"value": -34},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/GPTlogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 700},
+        "y": {"value": -34},
+        "text": {"value": "GPT-4 (1760B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 30, "height": 200},
+      "encoding": {
+        "x": {"value": 696},
+        "y": {"value": 70},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/googlelogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 696},
+        "y": {"value": 70},
+        "text": {"value": "PaLM-2 (340B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 36, "height": 200},
+      "encoding": {
+        "x": {"value": 745},
+        "y": {"value": 128},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/metalogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 14,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 745},
+        "y": {"value": 128},
+        "text": {"value": "LLaMA-2 (70B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 28, "height": 200},
+      "encoding": {
+        "x": {"value": 780},
+        "y": {"value": 41},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/TIIlogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 21,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 780},
+        "y": {"value": 41},
+        "text": {"value": "Falcon (180B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 28, "height": 200},
+      "encoding": {
+        "x": {"value": 847},
+        "y": {"value": 107},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/mistrallogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 19,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 847},
+        "y": {"value": 105},
+        "text": {"value": "Mistral-8x22B (141B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 37, "height": 200},
+      "encoding": {
+        "x": {"value": 848},
+        "y": {"value": 22},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/nvidialogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 17,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 848},
+        "y": {"value": 22},
+        "text": {"value": "Nemotron-4 (340B)"},
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {"type": "image", "width": 36, "height": 200},
+      "encoding": {
+        "x": {"value": 905},
+        "y": {"value": 70},
+        "url": {
+          "value": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/images/metalogo.png"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 14,
+        "fontSize": 11.5,
+        "color": "black",
+        "fontWeight": 400
+      },
+      "encoding": {
+        "x": {"value": 905},
+        "y": {"value": 70},
+        "text": {"value": "LLaMA-3.2 (405B)"},
+        "tooltip": null
+      }
+    },
+    {"mark": {"type": "line", "strokeWidth": 2, "color": "#b46e38"}},
+    {
+      "mark": {"type": "point", "size": 80, "filled": true, "color": "#ac4317"},
+      "encoding": {
+        "tooltip": [
+          {"field": "Model", "title": "Model"},
+          {"field": "Lab", "title": "Lab"},
+          {
+            "field": "ParametersInMillions",
+            "title": "Size (Millions)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelColor": "black",
+      "domainColor": "black",
+      "tickColor": "black",
+      "tickWidth": 0.5
+    }
+  }
+}

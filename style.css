@@ -5,7 +5,7 @@ h2{
     font-family: 'Arial', sans-serif;
     font-size: 40px;
     margin-left: 23px;
-    font-weight: bold;
+    font-weight: lighter;
     color: rgb(113, 108, 108);
     line-height: 80px;
     margin-bottom: -10px;
@@ -22,7 +22,7 @@ p{
 }
 
 .container{
-    width: 1500px;
+    width: 100px;
     height: 2150px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(../img/crowd.jpg);
     background-position: center;
@@ -47,7 +47,7 @@ p{
 
 .content{
     margin-top: -50px;
-    width: 965px;
+    width: 950px;
     border-radius: 8px;
     background: white;
 
