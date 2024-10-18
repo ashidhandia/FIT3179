@@ -1,0 +1,234 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": ""}},
+  "padding": {"top": 0, "left": 0, "right": 0, "bottom": 0},
+  "hconcat": [
+    {
+      "width": 70,
+      "height": 250,
+      "title": {
+        "text": "500km Flight (1 Person)",
+        "anchor": "middle",
+        "fontSize": 15,
+        "color": "#323232",
+        "fontWeight": 100,
+        "font": "Impact",
+        "subtitle": "1 Icon = 0.1 ton",
+        "subtitleColor": "#323232",
+        "subtitleFontSize": 11.5,
+        "subtitleFontWeight": 400,
+        "dy": 3,
+        "dx": 10
+      },
+      "data": {"values": [{"id": 1, "CO2": "0.1 tons"}]},
+      "transform": [
+        {"calculate": "ceil(datum.id / 7)", "as": "col"},
+        {"calculate": "datum.id - datum.col * 7", "as": "row"}
+      ],
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "x": {"field": "col", "type": "ordinal", "axis": null},
+        "y": {"field": "row", "type": "ordinal", "axis": null},
+        "shape": {
+          "value": "M16.63,105.75c0.01-4.03,2.3-7.97,6.03-12.38L1.09,79.73c-1.36-0.59-1.33-1.42-0.54-2.4l4.57-3.9c0.83-0.51,1.71-0.73,2.66-0.47l26.62,4.5l22.18-24.02L4.8,18.41c-1.31-0.77-1.42-1.64-0.07-2.65l7.47-5.96l67.5,18.97L99.64,7.45c6.69-5.79,13.19-8.38,18.18-7.15c2.75,0.68,3.72,1.5,4.57,4.08c1.65,5.06-0.91,11.86-6.96,18.86L94.11,43.18l18.97,67.5l-5.96,7.47c-1.01,1.34-1.88,1.23-2.65-0.07L69.43,66.31L45.41,88.48l4.5,26.62c0.26,0.94,0.05,1.82-0.47,2.66l-3.9,4.57c-0.97,0.79-1.81,0.82-2.4-0.54l-13.64-21.57c-4.43,3.74-8.37,6.03-12.42,6.03C16.71,106.24,16.63,106.11,16.63,105.75L16.63,105.75z"
+        },
+        "color": {"value": "#d79656"},
+        "size": {"value": 0.1},
+        "tooltip": [{"field": "CO2", "title": "Global Avg. CO2 Emission:"}]
+      }
+    },
+    {
+      "width": 70,
+      "height": 250,
+      "title": {
+        "text": "Avg. Human Life (1 Year)",
+        "anchor": "middle",
+        "fontSize": 15,
+        "color": "#323232",
+        "fontWeight": 100,
+        "font": "Impact",
+        "subtitle": "1 Icon = 1 ton",
+        "subtitleColor": "#323232",
+        "subtitleFontSize": 11.5,
+        "subtitleFontWeight": 400,
+        "dy": 3,
+        "dx": 8
+      },
+      "data": {
+        "values": [
+          {"id": 1, "CO2": "6.6 tons"},
+          {"id": 2, "CO2": "6.6 tons"},
+          {"id": 3, "CO2": "6.6 tons"},
+          {"id": 4, "CO2": "6.6 tons"},
+          {"id": 5, "CO2": "6.6 tons"},
+          {"id": 6, "CO2": "6.6 tons"},
+          {"id": 7, "CO2": "6.6 tons"}
+        ]
+      },
+      "transform": [
+        {"calculate": "ceil(datum.id / 5)", "as": "col"},
+        {"calculate": "datum.id - datum.col * 5", "as": "row"}
+      ],
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "x": {"field": "col", "type": "ordinal", "axis": null},
+        "y": {"field": "row", "type": "ordinal", "axis": null},
+        "shape": {
+          "value": "M23.59,0A10.34,10.34,0,1,1,13.25,10.34,10.34,10.34,0,0,1,23.59,0ZM36.66,38.93v78.23a5.74,5.74,0,0,1-5.72,5.72h0a5.73,5.73,0,0,1-5.72-5.72v-46H22.11v46a5.74,5.74,0,0,1-5.72,5.72h0a5.74,5.74,0,0,1-5.72-5.72V38.93h-2V67.68c0,5.73-8.67,5.73-8.67,0V36.74c0-5,1.69-8.56,4.77-10.88,5.3-4,32.33-4,37.63,0,3.08,2.32,4.79,5.85,4.78,10.88V67.68c0,5.73-8.68,5.73-8.68,0V38.93Z"
+        },
+        "color": {"value": "#d79656"},
+        "size": {"value": 0.5},
+        "tooltip": [{"field": "CO2", "title": "Global Avg. CO2 Emission:"}]
+      }
+    },
+    {
+      "width": 45,
+      "height": 250,
+      "title": {
+        "text": "Training GPT-3",
+        "anchor": "middle",
+        "fontSize": 15,
+        "color": "#323232",
+        "fontWeight": 100,
+        "font": "Impact",
+        "subtitle": "1 Icon = 100 tons",
+        "subtitleColor": "#323232",
+        "subtitleFontSize": 11.5,
+        "subtitleFontWeight": 400,
+        "dy": 3,
+        "dx": 22
+      },
+      "data": {
+        "values": [
+          {"id": 1, "CO2": "552 tons"},
+          {"id": 2, "CO2": "552 tons"},
+          {"id": 3, "CO2": "552 tons"},
+          {"id": 4, "CO2": "552 tons"},
+          {"id": 5, "CO2": "552 tons"},
+          {"id": 6, "CO2": "552 tons"}
+        ]
+      },
+      "transform": [
+        {"calculate": "ceil(datum.id / 6)", "as": "col"},
+        {"calculate": "datum.id - datum.col * 6", "as": "row"}
+      ],
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "x": {"field": "col", "type": "ordinal", "axis": null},
+        "y": {"field": "row", "type": "ordinal", "axis": null},
+        "shape": {
+          "value": "M63.91,18.75v12.16h33.51c5.43,0,9.87,4.44,9.87,9.87v12.47h13.42c1.19,0,2.17,0.97,2.17,2.17v25.28 c0,1.19-0.97,2.17-2.17,2.17h-13.42v12.47c0,5.43-4.44,9.87-9.87,9.87h-73c-5.43,0-9.87-4.44-9.87-9.87V82.87H2.17 C0.97,82.87,0,81.9,0,80.71V55.42c0-1.19,0.97-2.17,2.17-2.17h12.38V40.79c0-5.43,4.44-9.87,9.87-9.87h33.51V18.75 c-3.85-1.26-6.62-4.87-6.62-9.14c0-5.31,4.3-9.61,9.61-9.61c5.31,0,9.61,4.3,9.61,9.61C70.53,13.88,67.75,17.49,63.91,18.75 L63.91,18.75z M41.03,79.74h40.81c1.99,0,3.62,1.63,3.62,3.62v1.7c0,1.99-1.63,3.62-3.62,3.62H41.03c-1.99,0-3.62-1.63-3.62-3.62 v-1.7C37.41,81.36,39.04,79.74,41.03,79.74L41.03,79.74z M78.7,47.59c5.37,0,9.73,4.35,9.73,9.73c0,5.37-4.35,9.72-9.73,9.72 s-9.72-4.35-9.72-9.72C68.97,51.94,73.33,47.59,78.7,47.59L78.7,47.59z M44.18,47.59c5.37,0,9.72,4.35,9.72,9.73 c0,5.37-4.35,9.72-9.72,9.72c-5.37,0-9.72-4.35-9.72-9.72C34.46,51.94,38.81,47.59,44.18,47.59L44.18,47.59z"
+        },
+        "color": {"value": "#A00000"},
+        "size": {"value": 0.5},
+        "tooltip": [{"field": "CO2", "title": "Training GPT-3 Model:"}]
+      }
+    },
+    {
+      "width": 570,
+      "height": 250,
+      "title": {
+        "text": "Training GPT-4",
+        "anchor": "middle",
+        "fontSize": 15,
+        "color": "#323232",
+        "fontWeight": 100,
+        "font": "Impact",
+        "subtitle": "1 Icon = 100 tons",
+        "subtitleColor": "#323232",
+        "subtitleFontSize": 11.5,
+        "subtitleFontWeight": 400,
+        "dy": 3,
+        "dx": 21
+      },
+      "data": {
+        "values": [
+          {"id": 1, "CO2": "6912 tons"},
+          {"id": 2, "CO2": "6912 tons"},
+          {"id": 3, "CO2": "6912 tons"},
+          {"id": 4, "CO2": "6912 tons"},
+          {"id": 5, "CO2": "6912 tons"},
+          {"id": 6, "CO2": "6912 tons"},
+          {"id": 7, "CO2": "6912 tons"},
+          {"id": 8, "CO2": "6912 tons"},
+          {"id": 9, "CO2": "6912 tons"},
+          {"id": 10, "CO2": "6912 tons"},
+          {"id": 11, "CO2": "6912 tons"},
+          {"id": 12, "CO2": "6912 tons"},
+          {"id": 13, "CO2": "6912 tons"},
+          {"id": 14, "CO2": "6912 tons"},
+          {"id": 15, "CO2": "6912 tons"},
+          {"id": 16, "CO2": "6912 tons"},
+          {"id": 17, "CO2": "6912 tons"},
+          {"id": 18, "CO2": "6912 tons"},
+          {"id": 19, "CO2": "6912 tons"},
+          {"id": 20, "CO2": "6912 tons"},
+          {"id": 21, "CO2": "6912 tons"},
+          {"id": 22, "CO2": "6912 tons"},
+          {"id": 23, "CO2": "6912 tons"},
+          {"id": 24, "CO2": "6912 tons"},
+          {"id": 25, "CO2": "6912 tons"},
+          {"id": 26, "CO2": "6912 tons"},
+          {"id": 27, "CO2": "6912 tons"},
+          {"id": 28, "CO2": "6912 tons"},
+          {"id": 29, "CO2": "6912 tons"},
+          {"id": 30, "CO2": "6912 tons"},
+          {"id": 31, "CO2": "6912 tons"},
+          {"id": 32, "CO2": "6912 tons"},
+          {"id": 33, "CO2": "6912 tons"},
+          {"id": 34, "CO2": "6912 tons"},
+          {"id": 35, "CO2": "6912 tons"},
+          {"id": 36, "CO2": "6912 tons"},
+          {"id": 37, "CO2": "6912 tons"},
+          {"id": 38, "CO2": "6912 tons"},
+          {"id": 39, "CO2": "6912 tons"},
+          {"id": 40, "CO2": "6912 tons"},
+          {"id": 41, "CO2": "6912 tons"},
+          {"id": 42, "CO2": "6912 tons"},
+          {"id": 43, "CO2": "6912 tons"},
+          {"id": 44, "CO2": "6912 tons"},
+          {"id": 45, "CO2": "6912 tons"},
+          {"id": 46, "CO2": "6912 tons"},
+          {"id": 47, "CO2": "6912 tons"},
+          {"id": 48, "CO2": "6912 tons"},
+          {"id": 49, "CO2": "6912 tons"},
+          {"id": 50, "CO2": "6912 tons"},
+          {"id": 51, "CO2": "6912 tons"},
+          {"id": 52, "CO2": "6912 tons"},
+          {"id": 53, "CO2": "6912 tons"},
+          {"id": 54, "CO2": "6912 tons"},
+          {"id": 55, "CO2": "6912 tons"},
+          {"id": 56, "CO2": "6912 tons"},
+          {"id": 57, "CO2": "6912 tons"},
+          {"id": 58, "CO2": "6912 tons"},
+          {"id": 59, "CO2": "6912 tons"},
+          {"id": 60, "CO2": "6912 tons"},
+          {"id": 61, "CO2": "6912 tons"},
+          {"id": 62, "CO2": "6912 tons"},
+          {"id": 63, "CO2": "6912 tons"},
+          {"id": 64, "CO2": "6912 tons"},
+          {"id": 65, "CO2": "6912 tons"},
+          {"id": 66, "CO2": "6912 tons"},
+          {"id": 67, "CO2": "6912 tons"},
+          {"id": 68, "CO2": "6912 tons"},
+          {"id": 69, "CO2": "6912 tons"}
+        ]
+      },
+      "transform": [
+        {"calculate": "ceil(datum.id / 6)", "as": "col"},
+        {"calculate": "datum.id - datum.col * 6", "as": "row"}
+      ],
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "x": {"field": "col", "type": "ordinal", "axis": null},
+        "y": {"field": "row", "type": "ordinal", "axis": null},
+        "shape": {
+          "value": "M63.91,18.75v12.16h33.51c5.43,0,9.87,4.44,9.87,9.87v12.47h13.42c1.19,0,2.17,0.97,2.17,2.17v25.28 c0,1.19-0.97,2.17-2.17,2.17h-13.42v12.47c0,5.43-4.44,9.87-9.87,9.87h-73c-5.43,0-9.87-4.44-9.87-9.87V82.87H2.17 C0.97,82.87,0,81.9,0,80.71V55.42c0-1.19,0.97-2.17,2.17-2.17h12.38V40.79c0-5.43,4.44-9.87,9.87-9.87h33.51V18.75 c-3.85-1.26-6.62-4.87-6.62-9.14c0-5.31,4.3-9.61,9.61-9.61c5.31,0,9.61,4.3,9.61,9.61C70.53,13.88,67.75,17.49,63.91,18.75 L63.91,18.75z M41.03,79.74h40.81c1.99,0,3.62,1.63,3.62,3.62v1.7c0,1.99-1.63,3.62-3.62,3.62H41.03c-1.99,0-3.62-1.63-3.62-3.62 v-1.7C37.41,81.36,39.04,79.74,41.03,79.74L41.03,79.74z M78.7,47.59c5.37,0,9.73,4.35,9.73,9.73c0,5.37-4.35,9.72-9.73,9.72 s-9.72-4.35-9.72-9.72C68.97,51.94,73.33,47.59,78.7,47.59L78.7,47.59z M44.18,47.59c5.37,0,9.72,4.35,9.72,9.73 c0,5.37-4.35,9.72-9.72,9.72c-5.37,0-9.72-4.35-9.72-9.72C34.46,51.94,38.81,47.59,44.18,47.59L44.18,47.59z"
+        },
+        "color": {"value": "#A00000"},
+        "size": {"value": 0.5},
+        "tooltip": [{"field": "CO2", "title": "Training GPT-4 Model:"}]
+      }
+    }
+  ]
+}
