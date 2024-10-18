@@ -44,7 +44,7 @@
         .vis-container {
             margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content:center;
         }
 
         .text-container {
@@ -96,11 +96,17 @@
             or generative AI taking the world by storm, artificial intelligence has come a long way. However, with each
             achievement, there are costs and sacrifices. What exactly is the cost of artificial intelligence?</p>
 
+        <!-- New Visualization for Map (added before the text) -->
+        <div class="vis-container">
+            <div id="visMap"></div>
+        </div>
+
         <!-- New Visualization for AI Performance (added before the text) -->
         <div class="vis-container">
             <div id="visAIPerformance"></div>
         </div>
 
+        
         
 
         <!-- Section 2 visualization -->
@@ -158,7 +164,7 @@ Earth Overshoot Day marks the point in the year when humanity has consumed more 
         // CO2 Perspective Visualization
         var specVisMap = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/ChloroplethMap.json";
 
-        vegaEmbed('#visCO2', specVisCO2, { "actions": false }).then(function (result) {
+        vegaEmbed('#visMap', specVisMap, { "actions": false }).then(function (result) {
             // Access the Vega view instance as result.view
         }).catch(console.error);
     </script>
