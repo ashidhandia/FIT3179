@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bullying across Victoria</title>
+    <title>AI Energy Consumption</title>
 
     <!-- Import Vega & Vega-Lite -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -18,7 +18,7 @@
     <style>
         * {
             font-family: 'Oxygen', sans-serif;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         h1 {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background-color: #e7e7e7; /* Adjusted to your previous request */
+            background-color: #e7e7e7;
             margin: 0;
             padding: 0;
         }
@@ -37,8 +37,8 @@
             margin: 50px auto;
             padding: 50px;
             text-align: center;
-            border-radius: 15px; /* Curved edges */
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .vis-container {
@@ -48,30 +48,42 @@
         }
 
         .text-container {
-            display: flex; /* Flexbox for side-by-side layout */
-            justify-content: space-between; /* Space between paragraphs */
-            margin-top: 0px; /* Space above the text */
-            padding: 0 0px; /* Optional padding for aesthetics */
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding: 0;
         }
 
         .text-container p {
-            flex: 1; /* Allow paragraphs to grow and fill the container */
-            margin: 0 15px; /* Space between paragraphs */
-            text-align: justify; /* Align text to the left */
+            flex: 1;
+            margin: 0 15px;
+            text-align: justify;
             font-size: 16px;
             color: #333;
         }
 
-        /* Additional styling for the left paragraph */
         .text-container p:first-child {
-            margin-left: -25px; /* Adjust this value to move the text further left */
-            text-align: justify;
+            margin-left: -25px;
         }
 
         .text-container p:last-child {
-            margin-right: -25px; /* Adjust this value to move the right text further right */
+            margin-right: -25px;
         }
 
+        .highlight {
+            font-weight: bold;
+            color: #d9534f;
+        }
+
+        a.custom-link {
+            text-decoration: none;
+            color: #d9534f;
+        }
+
+        .formula-inline {
+            font-family: 'Courier New', Courier, monospace;
+        }
     </style>
 </head>
 
@@ -91,7 +103,14 @@
         <!-- Text Container for Side by Side Paragraphs -->
         <div class="text-container">
             <p>
-                There are winners and losers for each achievement that comes our way. The AI industry is thriving and reaching never attained heights, but are there any sacrifices made for this meteoric rise? What exactly is the cost of artificial intelligence? The gains are visible, but what have we lost?
+                According to the research by 
+                <a href="https://arxiv.org/ftp/arxiv/papers/2104/2104.10350.pdf" class="custom-link">Patterson et al. (2021)</a>, 
+                the average energy consumption can be calculated through a set formula. It depends heavily on the 
+                <span class="highlight">number of parameters</span>, as the more parameters there are, the longer and more 
+                intensive the training process becomes:<br>
+                <span class="formula-inline">Energy (kWh) = Hours to train × Number of processors × Average power per processor (kW) × 1000 ÷ PUE</span>.
+                <br>The formula highlights how various factors such as training duration, the number of processors, and 
+                the power consumption of each processor contribute to the overall energy demand of training AI models.
             </p>
             <p>
                 The 60s had the nuclear arms race where the major superpowers were competing in increasing their nuclear arsenals through rigorous research and high volumes of investment. The 21st century is now seeing its own version of the arms race with artificial intelligence. Countries have devoted trillions of dollars towards AI development and research to harness the true potential of artificial intelligence for boosting economic growth and technological advancement. According to OurWorldInData, the United States alone invested around 150 billion dollars in 2021. For comparison, this is equivalent to the entire GDP of Morocco. 68 governments around the world recorded a mind-blowing number of patents in the artificial intelligence industry at around 94,000 patent applications submitted. This indicates a positive return from the investments.
