@@ -1,8 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "config": {"view": {"stroke": ""}},
-  "padding": {"top": -55, "left": 10, "right": 10, "bottom": 10},
-  "background": "#80808030",
+  "padding": {"top": -55, "left": 15, "right": 15, "bottom": 10},
   "vconcat": [
     {
       "vconcat": [
