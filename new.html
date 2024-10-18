@@ -46,7 +46,7 @@
         .vis-container {
             margin: 0 auto;
             display: flex;
-            justify-content:center;
+            justify-content: center;
         }
 
         .text-container {
@@ -86,6 +86,28 @@
         .formula-inline {
             font-family: 'Courier New', Courier, monospace;
         }
+
+        /* New style for the map and text above */
+        .map-text-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0 0px;;
+        }
+
+        .map-container {
+            flex: 1;
+            margin-right: 0px;
+            margin-left: -40px;
+        }
+
+        .text-container-side {
+            /* flex: 2; */
+            text-align: justify;
+            font-size: 16px;
+            color: #333;
+            margin-right: -25px;
+        }
     </style>
 </head>
 
@@ -94,21 +116,24 @@
 
         <!-- Title and introduction text -->
         <h1>Cost of AI Evolution: Progress or Pitfall?</h1>
-        <p>With changing times, ai has swiftly integrated into our daily lives. Be it the virtual assistant on our phones or generative AI taking the whole world by storm, it is undeniable that artificial intelligence has come a long way. With evolutionary breakthroughs seemingly rolling out each month, artificial intelligence is growing stronger with each iteration. 
+        <p>With changing times, AI has swiftly integrated into our daily lives. Be it the virtual assistant on our phones or generative AI taking the whole world by storm, it is undeniable that artificial intelligence has come a long way. With evolutionary breakthroughs seemingly rolling out each month, artificial intelligence is growing stronger with each iteration. 
             There are winners and losers for each achievement that comes our way.
-        It's easy to get swept up in the waves of hype, but these shiny capabilities come at a real cost to society and our planet.
+            It's easy to get swept up in the waves of hype, but these shiny capabilities come at a real cost to society and our planet.
         </p>
 
-        <!-- New Visualization for Map (added before the text) -->
-        <div class="vis-container">
-            <div id="visMap"></div>
-        </div>
+        <!-- New Map and Text Container (side-by-side) -->
+        <div class="map-text-container">
+            <!-- Left Side: Map -->
+            <div id="visMap" class="map-container"></div>
 
-        <div class="text-container">
-            <p>
-                The 60s had the nuclear arms race where the major superpowers were competing in increasing their nuclear arsenals through rigorous research and high volumes of investment. The 21st century is now seeing its own version of the arms race with artificial intelligence. Countries have devoted trillions of dollars towards ai development and research to harness the true potential of artificial intelligence for boosting economic growth and technological advancement.
-According to OurWorldInData, United States alone invested around 150 billion dollars in 2021. For comparison, this equivalent to the entire GDP of Morocco.
-            </p>
+            <!-- Right Side: Text -->
+            <div class="text-container-side">
+                <p>
+                    The 60s had the nuclear arms race where the major superpowers were competing in increasing their nuclear arsenals through rigorous research and high volumes of investment. The 21st century is now seeing its own version of the arms race with artificial intelligence. Countries have devoted trillions of dollars towards AI development and research to harness the true potential of artificial intelligence for boosting economic growth and technological advancement.
+                    <br><br>
+                    According to OurWorldInData, the United States alone invested around 150 billion dollars in 2021. For comparison, this is equivalent to the entire GDP of Morocco.
+                </p>
+            </div>
         </div>
 
         <!-- New Visualization for AI Performance (added before the text) -->
@@ -116,21 +141,12 @@ According to OurWorldInData, United States alone invested around 150 billion dol
             <div id="visAIPerformance"></div>
         </div>
 
-        <div class="text-container">
-            <p>
-                With an increase in investment, the capabilities of ai have evidently increased. Kiela et al. (2023) – with minor processing by Our World in Data’s research gives valuable insight on how far the capabilities have come over the years.
-This increase functionality and capabilities surely are a result of increase in investments but how exactly does an influx of cash help ai performance? According to TEDAi, parameters play a huge role in determining ai performance.
-By visualizing each model’s parameters, we can see the vast difference between the number of parameters at play which directly coincides with each model’s performance. GPT-4, a successor of GPT-3, IS definitively ten folds smarter than its predecessor with a clear difference in parameter size. Higher investments result in more and better GPU’s, ability to utilize more electricity and elongate training days for the billions of parameters to train stronger, more capable artificial intelligence models.
-            </p>
-        </div>
-        
-
-        <!-- Section 2 visualization -->
+        <!-- Section 2 Visualization -->
         <div class="vis-container">
             <div id="vis2"></div>
         </div>
 
-        <!-- Text Container for Side by Side Paragraphs -->
+        <!-- Side-by-Side Text Layout (unchanged) -->
         <div class="text-container">
             <p>
                 According to the research by 
@@ -143,8 +159,8 @@ By visualizing each model’s parameters, we can see the vast difference between
                 the power consumption of each processor contribute to the overall energy demand of training AI models.
             </p>
             <p>
-                This overuse of electricity is certainly harmful which brings us to the concept of Earth Overshoot Day.
-Earth Overshoot Day marks the point in the year when humanity has consumed more resources than the Earth can regenerate in that same year. Since the late 1970s, this day has crept earlier and earlier on the calendar, signaling an unsustainable strain on the planet's resources. In 2023, it fell on August 2nd, demonstrating that we are consuming 75% more than what Earth's ecosystems can replenish.
+                This overuse of electricity is certainly harmful, which brings us to the concept of Earth Overshoot Day.
+                Earth Overshoot Day marks the point in the year when humanity has consumed more resources than the Earth can regenerate in that same year. Since the late 1970s, this day has crept earlier and earlier on the calendar, signaling an unsustainable strain on the planet's resources. In 2023, it fell on August 2nd, demonstrating that we are consuming 75% more than what Earth's ecosystems can replenish.
             </p>
         </div>
 
@@ -177,7 +193,7 @@ Earth Overshoot Day marks the point in the year when humanity has consumed more 
             // Access the Vega view instance as result.view
         }).catch(console.error);
 
-        // CO2 Perspective Visualization
+        // Map Visualization
         var specVisMap = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/ChloroplethMap.json";
 
         vegaEmbed('#visMap', specVisMap, { "actions": false }).then(function (result) {
