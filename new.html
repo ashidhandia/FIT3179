@@ -23,8 +23,21 @@
 
         h1 {
             margin-top: 0;
-            font-family: 'Oxygen', sans-serif;
-            font-weight: 900;
+            font-family: 'Impact';
+            font-weight: 200;
+            color: #323232;
+        }
+
+        h1 span.progress {
+            color: #007d38;
+            font-family: 'Impact';
+            font-weight: 200;
+        }
+
+        h1 span.pitfall {
+            color: #A00000;
+            font-family: 'Impact';
+            font-weight: 200;
         }
 
         body {
@@ -92,13 +105,13 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin: 0 0px;;
+            margin: 0 0px;
         }
 
         .map-container {
             flex: 1;
             margin-right: 0px;
-            margin-left: -40px;
+            margin-left: -48px;
         }
 
         .text-container-side {
@@ -115,8 +128,8 @@
     <div class="page">
 
         <!-- Title and introduction text -->
-        <h1>Cost of AI Evolution: Progress or Pitfall?</h1>
-        <p>With changing times, AI has swiftly integrated into our daily lives. Be it the virtual assistant on our phones or generative AI taking the whole world by storm, it is undeniable that artificial intelligence has come a long way. With evolutionary breakthroughs seemingly rolling out each month, artificial intelligence is growing stronger with each iteration. 
+        <h1>Cost of AI Evolution: <span class="progress">Progress</span> or <span class="pitfall">Pitfall</span>?</h1>
+        <p>With changing times, AI has swiftly integrated into our daily lives. Be it the virtual assistant on our phones or generative AI taking the whole world by storm, it is undeniable that artificial intelligence has come a long way. With evolutionary breakthroughs seemingly rolling out each month, artificial intelligence is growing stronger with each iteration.
             There are winners and losers for each achievement that comes our way.
             It's easy to get swept up in the waves of hype, but these shiny capabilities come at a real cost to society and our planet.
         </p>
@@ -149,13 +162,13 @@
         <!-- Side-by-Side Text Layout (unchanged) -->
         <div class="text-container">
             <p>
-                According to the research by 
-                <a href="https://arxiv.org/ftp/arxiv/papers/2104/2104.10350.pdf" class="custom-link">Patterson et al. (2021)</a>, 
-                the average energy consumption can be calculated through a set formula. It depends heavily on the 
-                <span class="highlight">number of parameters</span>, as the more parameters there are, the longer and more 
+                According to the research by
+                <a href="https://arxiv.org/ftp/arxiv/papers/2104/2104.10350.pdf" class="custom-link">Patterson et al. (2021)</a>,
+                the average energy consumption can be calculated through a set formula. It depends heavily on the
+                <span class="highlight">number of parameters</span>, as the more parameters there are, the longer and more
                 intensive the training process becomes:<br>
                 <span class="formula-inline">Energy (kWh) = Hours to train × Number of processors × Average power per processor (kW) × 1000 ÷ PUE</span>.
-                <br>The formula highlights how various factors such as training duration, the number of processors, and 
+                <br>The formula highlights how various factors such as training duration, the number of processors, and
                 the power consumption of each processor contribute to the overall energy demand of training AI models.
             </p>
             <p>
