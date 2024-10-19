@@ -41,7 +41,7 @@
         }
 
         p.intro-text {
-            font-size: 15px; /* Adjust font size as needed */
+            font-size: 14px; /* Adjust font size as needed */
             color: #323232; /* Adjust text color */
             text-align: center; /* Ensure text is justified */
             margin-top: -10px;
@@ -82,14 +82,15 @@
 
         .text-container p {
             flex: 1;
-            margin: 0 15px;
+            margin: 0 30px;
             text-align: justify;
-            font-size: 15px;
+            font-size: 14px;
             color: #333;
         }
 
         .text-container p:first-child {
             margin-left: -25px;
+            margin-top: 0px;
         }
 
         .text-container p:last-child {
@@ -112,7 +113,12 @@
         }
 
         .formula-inline {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Cambria font';
+            font-style: italic;
+            font-style: bold;
+            color: #a00000;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
 
         /* New style for the map and text above */
@@ -132,7 +138,7 @@
         .text-container-side {
             /* flex: 2; */
             text-align: justify;
-            font-size: 15px;
+            font-size: 14px;
             color: #333;
             margin-right: -20px;
             margin-top: 55px;
@@ -203,17 +209,23 @@ Take the United States, for instance. In 2021 alone, it funneled about <span cla
         <div class="text-container">
             <p>
                 According to the research by
-                <a href="https://arxiv.org/ftp/arxiv/papers/2104/2104.10350.pdf" class="custom-link">Patterson et al. (2021)</a>,
-                the average energy consumption can be calculated through a set formula. It depends heavily on the
-                <span class="highlight">number of parameters</span>, as the more parameters there are, the longer and more
-                intensive the training process becomes:<br>
-                <span class="formula-inline">Energy (kWh) = Hours to train × Number of processors × Average power per processor (kW) × 1000 ÷ PUE</span>.
-                <br>The formula highlights how various factors such as training duration, the number of processors, and
-                the power consumption of each processor contribute to the overall energy demand of training AI models.
+                <a href="https://arxiv.org/ftp/arxiv/papers/2104/2104.10350.pdf" class="custom-link">Patterson et al. (2021)</a>, the average energy consumption for training AI models can be calculated using a set formula:<br>
+                <span class="formula-inline">Energy (kWh) = Training Hours × Processors × Power/Processor × 1000 ÷ PUE</span>
+                <br>This consumption is directly tied to the model's complexity: the more parameters a model has, the longer and more intensive the training process becomes. As models grow larger and more powerful, understanding their energy 
+                footprint becomes crucial for balancing innovation with environmental responsibility.
             </p>
             <p>
-                This overuse of electricity is certainly harmful, which brings us to the concept of Earth Overshoot Day.
-                Earth Overshoot Day marks the point in the year when humanity has consumed more resources than the Earth can regenerate in that same year. Since the late 1970s, this day has crept earlier and earlier on the calendar, signaling an unsustainable strain on the planet's resources. In 2023, it fell on August 2nd, demonstrating that we are consuming 75% more than what Earth's ecosystems can replenish.
+                This excessive power consumption raises concerns, leading us to the concept of Earth Overshoot Day. 
+                This day marks when humanity has used more resources than the Earth can regenerate within the year. Since the late 1970s, 
+                Earth Overshoot Day has been arriving earlier each year, highlighting the unsustainable pressure on our planet's resources. 
+                <br>In 2024, it fell on August 1st, indicating that <span class="highlight">we are currently using the resources of 1.75 Earths to sustain the consumption demands of humanity.</span>
+                We have exceeded the capacity for the Earth to regenerate itself well before the end of each year.
+            </p>
+        </div>
+
+        <div class="text-container">
+            <p>
+                Alongside this excessive energy use and the planet's struggle to keep up, we’re also harming various ecosystems through our carbon emissions. Training AI models has an enormous carbon footprint, dwarfing the emissions of the average person.
             </p>
         </div>
 

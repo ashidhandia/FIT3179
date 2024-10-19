@@ -15,7 +15,7 @@
     "dy": -10,
     "dx": 0
   },
-  "padding": {"top": 0, "left": 15, "right": 15, "bottom": 10},
+  "padding": {"top": 0, "left": 15, "right": 15, "bottom": 0},
   "hconcat": [
     {
       "width": 80,
