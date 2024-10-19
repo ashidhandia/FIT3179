@@ -17,8 +17,8 @@
     <!-- Custom Style -->
     <style>
         * {
-            font-family: 'Oxygen', sans-serif;
-            line-height: 1.4;
+            font-family: 'Oxygen';
+            line-height: 1.35;
         }
 
         h1 {
@@ -38,6 +38,15 @@
             color: #A00000;
             font-family: 'Impact';
             font-weight: 200;
+        }
+
+        p.intro-text {
+            font-size: 15px; /* Adjust font size as needed */
+            color: #323232; /* Adjust text color */
+            text-align: center; /* Ensure text is justified */
+            margin-top: -10px;
+            margin-left: -25px;
+            margin-right: -25px;
         }
 
         body {
@@ -74,7 +83,7 @@
             flex: 1;
             margin: 0 15px;
             text-align: justify;
-            font-size: 16px;
+            font-size: 15px;
             color: #333;
         }
 
@@ -87,8 +96,13 @@
         }
 
         .highlight {
-            font-weight: bold;
-            color: #d9534f;
+            font-weight: 600;
+            color: #a00000;
+        }
+
+        .highlightgreen {
+            font-weight: 600;
+            color: #007d38;
         }
 
         a.custom-link {
@@ -117,9 +131,11 @@
         .text-container-side {
             /* flex: 2; */
             text-align: justify;
-            font-size: 16px;
+            font-size: 15px;
             color: #333;
-            margin-right: -25px;
+            margin-right: -20px;
+            margin-top: 55px;
+            margin-left: 0px;
         }
     </style>
 </head>
@@ -128,10 +144,9 @@
     <div class="page">
 
         <!-- Title and introduction text -->
-        <h1>Cost of AI Evolution: <span class="progress">Progress</span> or <span class="pitfall">Pitfall</span>?</h1>
-        <p>With changing times, AI has swiftly integrated into our daily lives. Be it the virtual assistant on our phones or generative AI taking the whole world by storm, it is undeniable that artificial intelligence has come a long way. With evolutionary breakthroughs seemingly rolling out each month, artificial intelligence is growing stronger with each iteration.
-            There are winners and losers for each achievement that comes our way.
-            It's easy to get swept up in the waves of hype, but these shiny capabilities come at a real cost to society and our planet.
+        <h1>Cost of AI Evolution: <span class="progress">Progress</span> or <span class="pitfall">Pitfall</span>..?</h1>
+        <p class="intro-text">With changing times, AI has swiftly integrated into our daily lives. Whether it’s the friendly voice on our phones or the buzz around generative AI, it is undeniable that artificial intelligence has come a long way. With exciting breakthroughs rolling out almost every month, AI is getting smarter and more capable.
+            It's easy to get swept up in the waves of hype, <span class="highlight">but these shiny capabilities come at a real cost to society and our planet.</span>
         </p>
 
         <!-- New Map and Text Container (side-by-side) -->
@@ -141,10 +156,12 @@
 
             <!-- Right Side: Text -->
             <div class="text-container-side">
-                <p>
-                    The 60s had the nuclear arms race where the major superpowers were competing in increasing their nuclear arsenals through rigorous research and high volumes of investment. The 21st century is now seeing its own version of the arms race with artificial intelligence. Countries have devoted trillions of dollars towards AI development and research to harness the true potential of artificial intelligence for boosting economic growth and technological advancement.
-                    <br><br>
-                    According to OurWorldInData, the United States alone invested around 150 billion dollars in 2021. For comparison, this is equivalent to the entire GDP of Morocco.
+                <br>
+                    In the 60s, we witnessed a fierce nuclear arms race as superpowers poured resources into building up their arsenals. Fast forward to the 21st century, and we’re seeing a new kind of arms race—this time in artificial intelligence.
+                    <br></br>
+                    Countries are investing trillions to unlock AI’s potential for driving economic growth and technological progress.
+
+Take the United States, for instance. In 2021 alone, it funneled about <span class="highlightgreen">$150 billion</span> into AI development. To put that into perspective, that’s roughly the same as the <span class="highlightgreen">entire GDP of Morocco!</span>
                 </p>
             </div>
         </div>
@@ -207,7 +224,7 @@
         }).catch(console.error);
 
         // Map Visualization
-        var specVisMap = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/ChloroplethMap.json";
+        var specVisMap = "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/json/ChloroplethMapGreen.json";
 
         vegaEmbed('#visMap', specVisMap, { "actions": false }).then(function (result) {
             // Access the Vega view instance as result.view

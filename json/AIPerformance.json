@@ -3,7 +3,7 @@
   "description": "AI Capabilities Evolution with a human benchmark",
   "width": 975,
   "height": 320,
-  "padding": {"top": 13, "left": 15, "right": 15, "bottom": 10},
+  "padding": {"top": 25, "left": 15, "right": 15, "bottom": 10},
   "title": {
     "text": "AI Performance Over Time",
     "anchor": "start",
