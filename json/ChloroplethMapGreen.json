@@ -39,7 +39,7 @@
     {"mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}},
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/divyansusu/123hitest/main/investment_ai.csv"
+        "url": "https://raw.githubusercontent.com/ashidhandia/FIT3179/main/Data/investment_ai.csv"
       },
       "transform": [
         {

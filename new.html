@@ -56,7 +56,7 @@
         }
 
         .page {
-            max-width: 960px;
+            max-width: 965px;
             background-color: white;
             margin: 50px auto;
             padding: 50px;
@@ -78,6 +78,8 @@
             margin-bottom: 15px;
             margin-left: -7px;
             padding: 0;
+            font-size: 14px;
+            text-align: justify;
         }
 
         .text-container p {
@@ -143,6 +145,15 @@
             margin-right: -20px;
             margin-top: 55px;
             margin-left: 0px;
+        }
+
+        /* Style for visualization credit */
+        .visualization-credit {
+            position:fixed;
+            bottom: 20px; /* Distance from the bottom */
+            right: 20px; /* Distance from the right */
+            font-size: 12px;
+            color: #555;
         }
     </style>
 </head>
@@ -233,7 +244,21 @@ Take the United States, for instance. In 2021 alone, it funneled about <span cla
         <div class="vis-container">
             <div id="visCO2"></div>
         </div>
+
+        <div class="text-container">
+            <p>
+                And this is only the initial training phase. The evaluation and deployment stages demand <span class="highlight">even more resources</span>, further increasing the carbon footprint of AI models. 
+                With millions of users making <span class="highlight">countless queries every hour</span>, the demand for computational resources is expected to soar, amplifying the environmental 
+                impact of AI technologies. As we continue to integrate AI into our daily lives, prioritizing the sustainability of these systems is crucial.
+                <br></br>This pressing need for sustainability serves as a sobering reminder of the environmental toll of artificial intelligence. As we push the boundaries of innovation, we must acknowledge the lasting effects on the planet’s finite resources. Without immediate attention to these issues, we risk accelerating the depletion of Earth’s ecosystems and pushing our environment beyond its capacity to regenerate.
+            </p>
+        </div>
+
+        <div class="visualization-credit">Visualization by: Ashi Dhandia</div>
+
     </div>
+
+
 
     <!-- Vega-Lite Visualisation -->
     <script type="text/javascript">
