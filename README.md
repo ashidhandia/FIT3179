@@ -6,7 +6,7 @@ Data visualization on the hidden environmental, economic, and societal costs of 
 ![Vega-Lite](https://img.shields.io/badge/Vega--Lite-charts-blue?style=flat)
 
 **Live deployment:**
-[GitHub Pages](https://ashidhandia.github.io/FIT3179/)
+[GitHub Pages](https://ashidhandia.github.io/ai-footprint-viz/)
 
 ---
 ## About the project
