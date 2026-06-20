@@ -24,7 +24,7 @@ The goal isn't to vilify AI, it's to ask: are we accounting for the full cost of
 Clone and open in a browser:
 
 ```bash
-git clone https://github.com/ashidhandia/FIT3179.git
+git clone https://github.com/ashidhandia/ai-footprint-viz.git
 cd FIT3179
 open index.html
 ```
